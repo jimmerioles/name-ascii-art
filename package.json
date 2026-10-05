@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "cli-ascii-logo": "^2.1.0"
+  }
+}
