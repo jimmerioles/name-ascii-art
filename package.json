@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "svg": "bun run scripts/generate-svg.ts"
+  },
   "dependencies": {
     "cli-ascii-logo": "^2.1.0"
   }

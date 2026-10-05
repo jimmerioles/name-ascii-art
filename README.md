@@ -2,7 +2,7 @@
 
 My name (`jimmerioles`) rendered as ASCII art.
 
-![jimmerioles in cyberpunk colors](jimmerioles-cyberpunk.svg)
+<img src="jimmerioles-cyberpunk.svg" width="900" alt="jimmerioles in cyberpunk colors">
 
 <details>
 <summary>Plain text version</summary>
@@ -32,24 +32,38 @@ default and needs the spacing tuned manually again.
 | --- | --- |
 | `jimmerioles.txt` | The art itself, plain text (no color codes), ANSI Shadow font |
 | `jimmerioles-cyberpunk.svg` | The colored version shown above, generated from `jimmerioles.txt` |
+| `scripts/generate-svg.ts` | Regenerates the SVG from `jimmerioles.txt` (text → vector paths via Inkscape) |
 | `package.json` / `bun.lock` | Keeps the generator tool [`cli-ascii-logo`](https://www.npmjs.com/package/cli-ascii-logo) pinned |
 | `node_modules/` | Installed deps (gitignored) |
 
 ## Colored version (SVG)
 
 GitHub strips ANSI colors from code blocks, so the color in this README comes from
-an SVG: `jimmerioles-cyberpunk.svg`. It draws `jimmerioles.txt` as SVG `<text>`
-with a linear gradient over a dark `#0d0221` background.
+an SVG: `jimmerioles-cyberpunk.svg`. It draws `jimmerioles.txt` with a linear
+gradient over a dark `#0d0221` background.
 
 - Gradient (cyberpunk): `#ff00ff` → `#00ffff` → `#ff00ff` (magenta → cyan → magenta)
-- Monospace font with `xml:space="preserve"` so the hand-tuned spacing survives
+- The glyphs are baked into vector **paths**, so the image renders identically in
+  every browser. Plain `<text>` broke on GitHub: font fallback gives the box-drawing
+  chars the wrong advance width, so the letters overlapped.
+- Displayed with `width="900"` so it fits GitHub's ~1012px README column; it scales
+  down on smaller screens, and `shape-rendering="crispEdges"` keeps the box lines sharp.
 
-To update: edit `jimmerioles.txt` first, then ask the agent to regenerate the SVG
-from it. Don't hand-edit the SVG — the spacing source of truth is the `.txt`.
+To update, edit `jimmerioles.txt` first, then regenerate:
+
+```bash
+bun run svg   # needs Inkscape
+```
+
+`scripts/generate-svg.ts` builds a text SVG and runs Inkscape with
+`--export-text-to-path` to convert the glyphs to paths. Don't hand-edit the SVG —
+the spacing source of truth is the `.txt`. After pushing an update, GitHub's image
+proxy may serve the old image for ~5 minutes — hard-refresh or wait it out.
 
 ## Requirements
 
 - [Bun](https://bun.sh) (lockfile is `bun.lock`)
+- [Inkscape](https://inkscape.org) — only needed to regenerate the SVG (`bun run svg`); the repo's checked-in SVG is already built
 
 ```bash
 bun install
