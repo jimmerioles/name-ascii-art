@@ -20,7 +20,7 @@ My name (`jimmerioles`) rendered as ASCII art.
 
 ## Why this exists
 
-I made this by hand because the available tools can't fix character spacing.
+I made this because the available tools can't fix character spacing.
 The default ANSI Shadow output crams the letters together — it looks cramped and
 not elegant. So the art here has manually widened gaps between characters to give
 it breathing room. Any regenerated output from the tools below will be cramped by
