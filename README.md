@@ -2,6 +2,11 @@
 
 My name (`jimmerioles`) rendered as ASCII art.
 
+![jimmerioles in cyberpunk colors](jimmerioles-cyberpunk.svg)
+
+<details>
+<summary>Plain text version</summary>
+
 ```
      ██╗ ██╗ ███╗   ███╗    ███╗   ███╗ ███████╗ ██████╗  ██╗  ██████╗  ██╗      ███████╗ ███████╗
      ██║ ██║ ████╗ ████║    ████╗ ████║ ██╔════╝ ██╔══██╗ ██║ ██╔═══██╗ ██║      ██╔════╝ ██╔════╝
@@ -10,6 +15,8 @@ My name (`jimmerioles`) rendered as ASCII art.
 ╚█████╔╝ ██║ ██║ ╚═╝ ██║    ██║ ╚═╝ ██║ ███████╗ ██║  ██║ ██║ ╚██████╔╝ ███████╗ ███████╗ ███████║
  ╚════╝  ╚═╝ ╚═╝     ╚═╝    ╚═╝     ╚═╝ ╚══════╝ ╚═╝  ╚═╝ ╚═╝  ╚═════╝  ╚══════╝ ╚══════╝ ╚══════╝
 ```
+
+</details>
 
 ## Why this exists
 
@@ -24,8 +31,21 @@ default and needs the spacing tuned manually again.
 | File | Purpose |
 | --- | --- |
 | `jimmerioles.txt` | The art itself, plain text (no color codes), ANSI Shadow font |
+| `jimmerioles-cyberpunk.svg` | The colored version shown above, generated from `jimmerioles.txt` |
 | `package.json` / `bun.lock` | Keeps the generator tool [`cli-ascii-logo`](https://www.npmjs.com/package/cli-ascii-logo) pinned |
 | `node_modules/` | Installed deps (gitignored) |
+
+## Colored version (SVG)
+
+GitHub strips ANSI colors from code blocks, so the color in this README comes from
+an SVG: `jimmerioles-cyberpunk.svg`. It draws `jimmerioles.txt` as SVG `<text>`
+with a linear gradient over a dark `#0d0221` background.
+
+- Gradient (cyberpunk): `#ff00ff` → `#00ffff` → `#ff00ff` (magenta → cyan → magenta)
+- Monospace font with `xml:space="preserve"` so the hand-tuned spacing survives
+
+To update: edit `jimmerioles.txt` first, then ask the agent to regenerate the SVG
+from it. Don't hand-edit the SVG — the spacing source of truth is the `.txt`.
 
 ## Requirements
 
